@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CAC267C41D75C69400BA5E3E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC267C31D75C69400BA5E3E /* main.swift */; };
+		CAC267CC1D75C6D000BA5E3E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC267CB1D75C6D000BA5E3E /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +24,7 @@
 
 /* Begin PBXFileReference section */
 		CAC267C01D75C69400BA5E3E /* printer-server-io */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "printer-server-io"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CAC267C31D75C69400BA5E3E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		CAC267CB1D75C6D000BA5E3E /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +42,7 @@
 			isa = PBXGroup;
 			children = (
 				CAC267C21D75C69400BA5E3E /* printer-server-io */,
+				CAC267CA1D75C6D000BA5E3E /* Sources */,
 				CAC267C11D75C69400BA5E3E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -57,9 +58,16 @@
 		CAC267C21D75C69400BA5E3E /* printer-server-io */ = {
 			isa = PBXGroup;
 			children = (
-				CAC267C31D75C69400BA5E3E /* main.swift */,
 			);
 			path = "printer-server-io";
+			sourceTree = "<group>";
+		};
+		CAC267CA1D75C6D000BA5E3E /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				CAC267CB1D75C6D000BA5E3E /* main.swift */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -119,7 +127,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CAC267C41D75C69400BA5E3E /* main.swift in Sources */,
+				CAC267CC1D75C6D000BA5E3E /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,6 +220,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/.build/debug";
 			};
 			name = Debug;
 		};
@@ -219,6 +228,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/.build/release";
 			};
 			name = Release;
 		};
@@ -241,6 +251,7 @@
 				CAC267C91D75C69400BA5E3E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
