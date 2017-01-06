@@ -1,16 +1,17 @@
-//
-//  Package.swift
-//  printer-server-io
-//
-//  Created by Richard Adem on 8/30/16.
-//  Copyright © 2016 Richard Adem. All rights reserved.
-//
-
 import PackageDescription
 
 let package = Package(
-    name: "PrinterServerIO",
+    name: "printer-server-io",
     dependencies: [
-        .Package(url: "https://github.com/vapor/vapor.git", majorVersion: 0)
+        .Package(url: "https://github.com/vapor/vapor.git", majorVersion: 1, minor: 3)
+    ],
+    exclude: [
+        "Config",
+        "Database",
+        "Localization",
+        "Public",
+        "Resources",
+        "Tests",
     ]
 )
+

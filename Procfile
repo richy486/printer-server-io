@@ -1,1 +1,1 @@
-web: SwiftServerIO --port=$PORT
+web: App --env=production --workdir="./"
