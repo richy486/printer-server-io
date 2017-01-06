@@ -2,7 +2,6 @@ import Vapor
 import HTTP
 
 let drop = Droplet()
-// let v1 = drop.grouped("v1")
 
 drop.group("v1") { v1 in
 
@@ -33,6 +32,20 @@ drop.group("v1") { v1 in
     ]))
   }
 
+}
+
+drop.group("v2") { v2 in
+    
+    v2.get("friends") { req in
+        let friends = [Friend(name: "Sarah", age: 33, email:"sarah@email.com"),
+                       Friend(name: "Steve", age: 31, email:"steve@email.com"),
+                       Friend(name: "Drew", age: 35, email:"drew@email.com")]
+        let friendsNode = try friends.makeNode()
+        let nodeDictionary = ["friends": friendsNode]
+        return try JSON(node: nodeDictionary)
+    }
+    
+    v2.resource("posts", PostController())
 }
 
 drop.run()
