@@ -4,12 +4,16 @@ import VaporPostgreSQL
 
 let drop = Droplet()
 drop.preparations.append(Friend.self)
+drop.preparations.append(User.self)
 
 do {
     try drop.addProvider(VaporPostgreSQL.Provider.self)
 } catch {
     assertionFailure("Error adding provider: \(error)")
 }
+
+let loginController = LoginController()
+loginController.addRoutes(to: drop)
 
 drop.group("v1") { v1 in
 
@@ -48,7 +52,7 @@ drop.group("v2") { v2 in
      Get Postgres:
      $ brew install postgres
      
-     Setup pPostgres in terminal 1:
+     Setup/Start Postgres in terminal 1:
      $ postgres -D /usr/local/var/postgres/
      
      Create Postgres database in terminal 2:
@@ -84,6 +88,10 @@ drop.group("v2") { v2 in
     }
     
     v2.resource("posts", PostController())
+}
+
+drop.group("v3") { v3 in
+    
 }
 
 drop.run()
