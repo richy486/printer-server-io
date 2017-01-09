@@ -8,6 +8,7 @@ using tutorials:
 - http://vapor.university/?medium=article
 - https://www.twilio.com/blog/2016/10/getting-started-with-the-vapor-swift-web-framework.html
 - https://www.bignerdranch.com/blog/server-side-swift-with-vapor/
+- https://medium.com/@caleb.kleveter/user-authentication-with-vapor-b21e977aad68#.bzit43d0x
 
 ## 📖 Documentation
 
