@@ -10,6 +10,12 @@ using tutorials:
 - https://www.bignerdranch.com/blog/server-side-swift-with-vapor/
 - https://medium.com/@caleb.kleveter/user-authentication-with-vapor-b21e977aad68#.bzit43d0x
 
+tokens:
+
+- https://github.com/siemensikkema/vapor-jwt
+- https://github.com/GabrielAraujo/VaporMongo
+- https://github.com/anthonycastelli/Vapor-JWTAuthorization
+
 ## 📖 Documentation
 
 Visit the Vapor web framework's [documentation](http://docs.vapor.codes) for instructions on how to use this package.

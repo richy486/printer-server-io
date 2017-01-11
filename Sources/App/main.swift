@@ -15,6 +15,12 @@ do {
 let loginController = LoginController()
 loginController.addRoutes(to: drop)
 
+drop.get { req in
+    return try drop.view.make("welcome", [
+        "message": drop.localization[req.lang, "welcome", "title"]
+        ])
+}
+
 drop.group("v1") { v1 in
 
   v1.get("hello") { request in
@@ -56,10 +62,10 @@ drop.group("v2") { v2 in
      $ postgres -D /usr/local/var/postgres/
      
      Create Postgres database in terminal 2:
-     $ createdb friends
+     $ createdb printerDB
      
      View Postgress database in terminal 2:
-     $ psql friends
+     $ psql printerDB
      
      Test post in terminal 3:
      $ curl -H "Content-Type: application/json" -X POST -d '{"name": "Some Name","age": 30,"email": "email@email.com"}' http://localhost:8080/v2/friend
@@ -88,6 +94,12 @@ drop.group("v2") { v2 in
     }
     
     v2.resource("posts", PostController())
+    
+    v2.get("users") { req in
+        let users = try User.all().makeNode()
+        let usersDictionary = ["users": users]
+        return try JSON(node: usersDictionary)
+    }
 }
 
 drop.group("v3") { v3 in

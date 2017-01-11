@@ -15,14 +15,15 @@ final class LoginController {
                 throw Abort.badRequest
         }
         
+        let credentials = UsernamePassword(username: username, password: password)
         
-        let creds = UsernamePassword(username: username, password: password)
-        var user = try User.register(credentials: creds) as? User
-        if user != nil {
-            try user!.save()
-            return Response(redirect: "/user/\(user!.username)")
+        if var user = try User.register(credentials: credentials) as? User {
+            try user.save()
+            let userDictionary = ["user": user]
+            return try JSON(node: userDictionary)
         } else {
-            return Response(redirect: "/create-admin")
+//            return Response(redirect: "/create-admin")
+            throw Abort.badRequest
         }
     }
     
@@ -33,12 +34,22 @@ final class LoginController {
         }
         
         let credentials = UsernamePassword(username: username, password: password)
-        do {
-            try request.auth.login(credentials, persist: true)
-            return Response(redirect: "/admin/new-post")
-        } catch {
-            return Response(redirect: "/login?succeded=false")
+        
+        if let user = try User.authenticate(credentials: credentials) as? User {
+            let userDictionary = ["user": user]
+            return try JSON(node: userDictionary)
+        } else {
+//            return Response(redirect: "/login?succeded=false")
+            throw Abort.notFound
         }
+        
+//        do {
+//            try request.auth.login(credentials, persist: true)
+//            
+//            return Response(redirect: "/admin/new-post")
+//        } catch {
+//            return Response(redirect: "/login?succeded=false")
+//        }
     }
     
 }
