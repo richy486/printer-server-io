@@ -2,6 +2,8 @@
 
 A basic vapor template for starting a new Vapor web application. If you're using vapor toolbox, you can use: `vapor new --template=basic`
 
+### tutorials used
+
 using tutorials:
 
 - https://github.com/vapor/example
@@ -15,6 +17,13 @@ tokens:
 - https://github.com/siemensikkema/vapor-jwt
 - https://github.com/GabrielAraujo/VaporMongo
 - https://github.com/anthonycastelli/Vapor-JWTAuthorization
+
+3rd party APIs:
+- https://github.com/vapor/slack-bot
+
+## Using services
+
+- http://openweathermap.org/
 
 ## 📖 Documentation
 

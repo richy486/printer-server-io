@@ -6,6 +6,16 @@ let drop = Droplet()
 drop.preparations.append(Friend.self)
 drop.preparations.append(User.self)
 
+//let configDirectory = workingDirectory.finished(with: "/") + "Config/"
+//let config = try Settings.Config(
+//    prioritized: [
+//        .commandLine,
+//        .directory(root: configDirectory + "secrets"),
+//        .directory(root: configDirectory + "weather"),
+//        .directory(root: configDirectory)
+//    ]
+//)
+
 do {
     try drop.addProvider(VaporPostgreSQL.Provider.self)
 } catch {
@@ -14,6 +24,9 @@ do {
 
 let loginController = LoginController()
 loginController.addRoutes(to: drop)
+
+let weatherController = WeatherController()
+weatherController.addRoutes(to: drop)
 
 drop.get { req in
     return try drop.view.make("welcome", [
