@@ -1,10 +1,13 @@
 import Vapor
+import AppLogic
 import HTTP
 import VaporPostgreSQL
 
 let drop = Droplet()
 drop.preparations.append(Friend.self)
 drop.preparations.append(User.self)
+
+try setup(drop)
 
 //let configDirectory = workingDirectory.finished(with: "/") + "Config/"
 //let config = try Settings.Config(
