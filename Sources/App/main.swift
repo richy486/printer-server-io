@@ -86,6 +86,9 @@ drop.group("v2") { v2 in
      
      Test post in terminal 3:
      $ curl -H "Content-Type: application/json" -X POST -d '{"name": "Some Name","age": 30,"email": "email@email.com"}' http://localhost:8080/v2/friend
+     
+     over heroku
+     $ heroku pg:psql
      */
     
     v2.get("friends") { req in
