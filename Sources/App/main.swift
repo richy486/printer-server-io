@@ -6,6 +6,7 @@ import VaporPostgreSQL
 let drop = Droplet()
 drop.preparations.append(Friend.self)
 drop.preparations.append(User.self)
+drop.preparations.append(Weather.self)
 
 try setup(drop)
 
@@ -111,10 +112,10 @@ drop.group("v2") { v2 in
     
     v2.resource("posts", PostController())
     
-    v2.get("users") { req in
-        let users = try User.all().makeNode()
-        let usersDictionary = ["users": users]
-        return try JSON(node: usersDictionary)
+    v2.get("weather") { req in
+        let allWeather = try Weather.all().makeNode()
+        let allWeatherDictionary = ["weathers": allWeather]
+        return try JSON(node: allWeatherDictionary)
     }
 }
 
