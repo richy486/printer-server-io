@@ -32,6 +32,12 @@ loginController.addRoutes(to: drop)
 let weatherController = WeatherController()
 weatherController.addRoutes(to: drop)
 
+let dailyReportController = DailyReportController()
+dailyReportController.addRoutes(to: drop)
+
+let todoController = TodoController()
+todoController.addRoutes(to: drop)
+
 drop.get { req in
     return try drop.view.make("welcome", [
         "message": drop.localization[req.lang, "welcome", "title"]

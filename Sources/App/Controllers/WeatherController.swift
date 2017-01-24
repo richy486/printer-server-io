@@ -11,7 +11,7 @@ final class WeatherController {
     func forecast(_ request: Request) throws -> ResponseRepresentable {
         
         guard let key = drop.config["weather","key"]?.string else {
-                throw Abort.custom(status: .badRequest, message: "Can't get weather key")
+            throw Abort.custom(status: .badRequest, message: "Can't get weather key")
         }
         
         let url = "http://api.openweathermap.org/data/2.5/forecast/daily?q=NewYork,us&mode=json&units=metric&cnt=1&appid=\(key)"

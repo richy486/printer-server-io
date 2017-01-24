@@ -38,53 +38,33 @@ final class Weather: Model {
     }
     
     init(openWeatherJson json: JSON) throws {
-        
-        
-        
-        
-        
-//        id = UUID().uuidString.makeNode()
-        self.id = nil
-        
-//        let forcastDay = try (node.extract("list") as? Array).first
 
+        self.id = nil
 
         guard let forcastDay = json["list"]?.array?[0] as? JSON else { throw Abort.badRequest }
         guard let day = forcastDay["dt"]?.string else { throw Abort.badRequest }
         self.day = day
+
+        guard let weather = forcastDay["weather"]?.array?[0] as? JSON else { throw Abort.badRequest }
         
-//        let forcastDay = (json["list"]?[0])!
-//        day = forcastDay["dt"]!
-        
-        guard let weather = forcastDay["weather"]?.array?[0] as? JSON else { throw Abort.badRequest }    //try forcastDay.extract("weather")[0]
-        
-        guard let title = weather["main"]?.string else { throw Abort.badRequest }      //try weather.extract("main")
+        guard let title = weather["main"]?.string else { throw Abort.badRequest }
         self.title = title
         
-//        description = ""//try weather.extract("description")
-        guard let description = weather["description"]?.string else { throw Abort.badRequest }      //try weather.extract("main")
+        guard let description = weather["description"]?.string else { throw Abort.badRequest }
         self.description = description
         
-        
-//        iconId = ""//try weather.extract("icon")
-        guard let iconId = weather["icon"]?.string else { throw Abort.badRequest }      //try weather.extract("main")
+        guard let iconId = weather["icon"]?.string else { throw Abort.badRequest }
         self.iconId = iconId
-        
-//        let temprature = ""//try forcastDay.extract("temp")
+
         guard let temprature = forcastDay["temp"]?.object else { throw Abort.badRequest }
         
-        
-//        avgTemprature = ""//try temprature.extract("day")
-        guard let avgTemprature = temprature["day"]?.double else { throw Abort.badRequest }      //try weather.extract("main")
+        guard let avgTemprature = temprature["day"]?.double else { throw Abort.badRequest }
         self.avgTemprature = avgTemprature
         
-        
-//        minTemprature = ""//try temprature.extract("min")
-        guard let minTemprature = temprature["min"]?.double else { throw Abort.badRequest }      //try weather.extract("main")
+        guard let minTemprature = temprature["min"]?.double else { throw Abort.badRequest }
         self.minTemprature = minTemprature
-        
-//        maxTemprature = ""//try temprature.extract("max")
-        guard let maxTemprature = temprature["max"]?.double else { throw Abort.badRequest }      //try weather.extract("main")
+
+        guard let maxTemprature = temprature["max"]?.double else { throw Abort.badRequest }
         self.maxTemprature = maxTemprature
     }
     
