@@ -7,6 +7,7 @@ let drop = Droplet()
 drop.preparations.append(Friend.self)
 drop.preparations.append(User.self)
 drop.preparations.append(Weather.self)
+drop.preparations.append(Todo.self)
 
 try setup(drop)
 
